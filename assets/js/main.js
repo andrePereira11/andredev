@@ -84,6 +84,30 @@
     }
   });
 
+  //Aparecer menu fixo
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.nav-menu').fadeIn('slow');
+    } else {
+      $('.nav-menu').fadeOut('slow');
+    }
+  });
+
+   //nav marker
+  var marker = document.querySelector('#marker');
+  var item = document.querySelectorAll('nav .superior-nav-menu a');
+  
+  function indicator(e){
+    marker.style.left = e.offsetLeft + "px";
+    marker.style.width = e.offsetWidth + "px";
+  }
+
+  item.forEach(link => {
+    link.addEventListener('mouseenter', (e)=>{
+      indicator(e.target);
+    })
+  })
+
   // Navigation active state on scroll
   var nav_sections = $('section');
   var main_nav = $('.nav-menu, #mobile-nav');

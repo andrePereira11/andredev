@@ -84,6 +84,30 @@
     }
   });
 
+  //Aparecer menu fixo
+  //$(window).scroll(function() {
+    //if ($(this).scrollTop() > 100) {
+      //$('.nav-menu').fadeIn('slow');
+    //} else {
+      //$('.nav-menu').fadeOut('slow');
+   // }
+ // });
+
+   //nav marker
+  //var marker = document.querySelector('#marker');
+  //var item = document.querySelectorAll('nav .superior-nav-menu a');
+  
+  //function indicator(e){
+  //  marker.style.left = e.offsetLeft + "px";
+  //  marker.style.width = e.offsetWidth + "px";
+  //}
+
+  //item.forEach(link => {
+  //  link.addEventListener('mouseenter', (e)=>{
+  //    indicator(e.target);
+  //  })
+  //})
+
   // Navigation active state on scroll
   var nav_sections = $('section');
   var main_nav = $('.nav-menu, #mobile-nav');
@@ -186,6 +210,26 @@
     dots: true,
     loop: true,
     items: 1
+  });
+
+  //send Email
+  $(document).ready(function(){
+    $('#send').click(function(){
+      var person_email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+      var name = document.getElementById('name').value;
+
+      Email.send({
+        SecureToken : "893ff853-b72f-4331-b6e3-4334f6765c35",
+        To : person_email,
+        From : "andreluis.alap@gmail.com",
+        Subject : "Portfolio" + name,
+        Body : message
+      }).then(
+        message => alert(message)
+      );
+    });
+  
   });
 
 })(jQuery);
